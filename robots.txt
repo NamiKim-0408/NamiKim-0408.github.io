@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://namikim-0408.github.io/sitemap.xml
