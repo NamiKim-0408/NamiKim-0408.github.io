@@ -27,3 +27,6 @@ title: About
 
 ## Contact
 - Email: namikim@etri.re.kr
+
+## Google Scholar
+- [Link](https://scholar.google.com/citations?user=ii0B1hIAAAAJ&hl=ko)
