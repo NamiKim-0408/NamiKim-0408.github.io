@@ -20,8 +20,8 @@ title: About
 	- ### M.S. | Korea Advanced Institute of Science & Technology (KAIST) | 2020
 	- ### B.S. | Konkuk University | Summa Cum Laude | 2014
 - ### Experience
-    - ### Senior researcher | Electronics and Telecommunications research Institute | Mar. 2022 ~
-	- ### Researcher | Electronics and Telecommunications research Institute | Mar. 2020 ~ Feb. 2022
+    - ### Senior researcher | Electronics and Telecommunications Research Institute | Mar. 2022 ~
+	- ### Researcher | Electronics and Telecommunications Research Institute | Mar. 2020 ~ Feb. 2022
 
 
 <br>
