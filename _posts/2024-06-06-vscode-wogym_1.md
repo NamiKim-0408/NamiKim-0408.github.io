@@ -7,7 +7,7 @@ categories: 강화학습
 toc: true
 ---
 
-## Step Into
+## Import
 
 이번 포스트부터 gymnasium 패키지에 대해서 알아볼 예정입니다.
 아이러니하지만 더 잘 알아보기 위해 예제 코드에서 gymnasium 패키지를 걷어내보도록 하겠습니다.
@@ -24,6 +24,7 @@ make() 함수로 부터 반환되는 클래스도 없어 env 변수에 아무것
 **CTRL+F** 키를 이용하여 env 변수를 찾아보면 코드에 총 7 군데 사용되었습니다.
 이 7개의 env 변수를 하나씩 삭제해보겠습니다.
 
+## Make
 ```python
 env = gym.make("CartPole-v1")
 ```
@@ -32,7 +33,7 @@ env = gym.make("CartPole-v1")
 gymnasium에서 제공하는 환경은 사용하지 않을 예정이므로 이 라인도 주석처리하겠습니다.
 make() 함수에 대한 자세한 설명은 [링크](https://gymnasium.farama.org/api/registry/#gymnasium.envs.registration.EnvSpec)를 통해 알 수 있습니다.
 
-<br/>
+## Action space
 ```python
 # Get number of actions from gym action space
 n_actions = env.action_space.n
@@ -45,7 +46,7 @@ CartPole 게임은 오른쪽 / 왼쪽 단 두개의 입력만 받는 게임입�
 [CartPole manual](https://gymnasium.farama.org/environments/classic_control/cart_pole/)에 action space는 discrete(2)라고 명시되어 있습니다.
 혹은 원본 코드를 실행해 볼 때 n_action 변수에 어떤 값이 담기는지 살펴봐도 알 수 있습니다.
 
-<br/>
+## Reset
 ```python
 # Get the number of state observations
 state, info = env.reset()
