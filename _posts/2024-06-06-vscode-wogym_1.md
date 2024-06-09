@@ -14,7 +14,7 @@ toc: true
 
 예제 코드의 가장 첫줄 gymnasium 패키지를 import하는 부분을 주석처리하고 F5를 눌러서 실행해 보면
 
-![No_import_error](/assets/img/RL_8/error.png)
+![No_import_error](/assets/img/wogym_1/error.png)
 <center>No import error</center>
 <br/>
 
@@ -74,7 +74,7 @@ cartpole 환경에 관한 소스코드는 아래 경로에서 찾을 수 있습�
 ```
 C:\Users\[사용자이름]\.virtualenvs\AI_proj-PVRbEtys\Lib\site-packages\gymnasium\envs\classic_control\cartpole.py
 ```
-![reset_function](/assets/img/RL_8/reset.png)
+![reset_function](/assets/img/wogym_1/reset.png)
 <center>클래스 내 정의된 reset 함수</center>
 <br/>
 
@@ -95,7 +95,7 @@ steps_beyond_terminated 변수는 무엇일까요?
 [공식 메뉴얼](https://gymnasium.farama.org/environments/classic_control/cart_pole/)에 따르면 네개의 값은 순서대로 카트 포지션, 카트 속도, 막대의 각도, 막대의 각속도를 의미합니다.
 구현은 spaces 모듈의 [box](https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box) 클래스로 구현되어 있습니다.
 
-![observation_space](/assets/img/RL_8/observation_space.png)
+![observation_space](/assets/img/wogym_1/observation_space.png)
 <center>상태 벡터 (observation space) 설명</center>
 <br/>
 
