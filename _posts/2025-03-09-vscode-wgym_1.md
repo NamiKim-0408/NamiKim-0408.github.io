@@ -438,8 +438,8 @@ gym.register(
     entry_point=GridWorldEnv,
 )
 
-#env_pre = gym.make("gymnasium_env/GridWorld-v0", render_mode="human")
-env_pre = gym.make("gymnasium_env/GridWorld-v0")
+#my_env = gym.make("gymnasium_env/GridWorld-v0", render_mode="human")
+my_env = gym.make("gymnasium_env/GridWorld-v0")
 ```
 코드 최상단에 패키지와 모듈을 import하는 부분에 설명하지 않은 여러 패키지와 모듈이 있군요.
 다름 포스트에서 설명을 이어가도록 하겠습니다.
