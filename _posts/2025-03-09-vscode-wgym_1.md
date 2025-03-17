@@ -8,6 +8,7 @@ toc: true
 ---
 
 ## GridWorldEnv
+
 이번 포스트에서는 나만의 커스텀 환경을 만드는 방법을 살펴볼 예정입니다.
 이 포스트의 내용은 거의 [Create a Custom Environment](https://gymnasium.farama.org/introduction/create_custom_env/) 이 페이지의 내용을 번역, 해설한 내용에 제가 필요하다고 생각하는 내용을 덧 붙인 글이 될 것입니다.
 따라서 원문을 보고 자세히 공부해 보는 것도 좋을 듯합니다.
@@ -98,7 +99,7 @@ dictionary 자료형입니다.
 ```
 위 코드를 자세히 살펴 볼까요?
 __gym__ 패키지에 __spaces__ 모듈의 __Space__ 추상 클래스를 상속받은 __Dict__ 클래스의 인스턴스를 observation 공간에 등록했군요.
-dictionary의 값(value)는 또 __gym.spaces.Box__ 클래스의 인스턴스로 정의되어있군요.
+dictionary의 값(value)은 또 __gym.spaces.Box__ 클래스의 인스턴스로 정의되어있군요.
 
 
 ```python
@@ -116,7 +117,7 @@ dictionary의 값(value)는 또 __gym.spaces.Box__ 클래스의 인스턴스로 
 action 공간은 __gym.spaces.Discrete(4)__, 즉 Discrete 클래스의 인스턴스로 정의되어있습니다.
 Discrete라는 이름에서 감이 오시나요?
 {0, 1, 2, 3}라는 정수 집합을 만들어주는 클래스입니다.
-_action_to_direction 변수는 단순시 0,1,2,3을 key로 가지는 dictionary를 담고있네요.
+_action_to_direction 변수는 단순히 0,1,2,3을 key로 가지는 dictionary를 담고있네요.
 
 ## get function
 객체지향 프로그래밍에서 이처럼 각 클래스 내부 변수의 현재 값을 얻는 함수를 만들어두는 경우는 매우 흔합니다.
@@ -270,7 +271,6 @@ from typing import Optional
 import numpy as np
 import gymnasium as gym
 
-from enum import Enum
 import pygame
 
 import math
@@ -286,10 +286,11 @@ import torch.optim as optim
 import torch.nn.functional as F
 
 class GridWorldEnv(gym.Env):
-
-    def __init__(self, size: int = 5):
+    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
+    def __init__(self, render_mode=None, size: int = 5):
         # The size of the square grid
         self.size = size
+        self.window_size = 512  # The size of the PyGame window
 
         # Define the agent and target location; randomly chosen in `reset` and updated in `step`
         self._agent_location = np.array([-1, -1], dtype=np.int32)
@@ -313,6 +314,12 @@ class GridWorldEnv(gym.Env):
             2: np.array([-1, 0]),  # left
             3: np.array([0, -1]),  # down
         }
+
+        assert render_mode is None or render_mode in self.metadata["render_modes"]
+        self.render_mode = render_mode
+
+        self.window = None
+        self.clock = None
     
     def _get_obs(self):
         return {"agent": self._agent_location, "target": self._target_location}
@@ -341,6 +348,9 @@ class GridWorldEnv(gym.Env):
         observation = self._get_obs()
         info = self._get_info()
 
+        if self.render_mode == "human":
+           self._render_frame()
+
         return observation, info
 
     def step(self, action):
@@ -357,6 +367,9 @@ class GridWorldEnv(gym.Env):
         reward = 1 if terminated else 0  # the agent is only reached at the end of the episode
         observation = self._get_obs()
         info = self._get_info()
+
+        if self.render_mode == "human":
+            self._render_frame()
 
         return observation, reward, terminated, truncated, info
 
@@ -441,6 +454,7 @@ gym.register(
 #my_env = gym.make("gymnasium_env/GridWorld-v0", render_mode="human")
 my_env = gym.make("gymnasium_env/GridWorld-v0")
 ```
-코드 최상단에 패키지와 모듈을 import하는 부분에 설명하지 않은 여러 패키지와 모듈이 있군요.
-다름 포스트에서 설명을 이어가도록 하겠습니다.
-일단은 실제 이 환경으로 강화학습을 실행하기 위해 미리 넣어둔 것이라 생각하면 되겠습니다.
+게임 rendering, pygame과 관련된 함수들이 추가적으로 구현되어 있습니다.
+이 함수들은 render(), _render_frame() 그리고 close() 함수입니다.
+이 함수들의 자세한 설명은 생략하고 [출처](https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation/)를 남겨 놓겠습니다.
+이 출처는 custom 환경을 만드는 방법 심화 버전입니다.
