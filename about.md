@@ -17,7 +17,7 @@ title: About
 ## Nam-I Kim
 - ### Education
 	- ### PH.D | Korea Advanced Institute of Science & Technology (KAIST) | 2020
-	- ### M.S. | Korea Advanced Institute of Science & Technology (KAIST) | 2020
+	- ### M.S. | Korea Advanced Institute of Science & Technology (KAIST) | 2016
 	- ### B.S. | Konkuk University | Summa Cum Laude | 2014
 - ### Experience
     - ### Senior researcher | Electronics and Telecommunications Research Institute | Mar. 2022 ~
